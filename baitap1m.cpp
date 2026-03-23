@@ -4,7 +4,7 @@ using namespace std;
 double Tinhtien(double kwh)
 {
     float sotien;
-    if (kwh <= 50)
+    if (kwh <= 50 && kwh > 0)
     {
         sotien = kwh * 1.984;
     }
@@ -35,36 +35,43 @@ int main()
     int n;
     double a[100];
 
+    int i;
+
     cout << "+ nhap so ho gia dinh la : ";
     cin >> n;
 
     for (int i = 0; i < n; i++)
     {
-        cout << "+ nhap so kwh dien tieu thu cua ho gia dinh thu " << i << " la :";
+        cout << "+ nhap so kwh dien tieu thu cua ho gia dinh thu " << i + 1 << " la :";
         cin >> a[i];
     }
-    // só tiền mỗi hộ gia đính phai tra
+    // 1. số tiền mỗi hộ gia đính phai tra
     for (int i = 0; i < n; i++)
-    {
-        double ketqua = Tinhtien(a[i]);
 
-        cout << " + ho gia dinh thu " << i << " tieu thu het la: " << a[i] << " va so tien phai tra la : " << ketqua << " VND " << endl;
+    {
+        double sotien = Tinhtien(a[i]);
+
+        cout << " + ho gia dinh thu " << i + 1 << " tieu thu het la: " << a[i] << " va so tien phai tra la : " << sotien << " VND " << endl;
     }
     cout << endl;
-    // Hộ gia đình sd ít nhất.
-    int min = a[0];
-    for (int i = 0; i < n; i++)
+
+    // 2. Hộ gia đình sd ít nhất.
+    double min = a[0];
+
+    for (int i = 1; i < n; i++)
     {
-        double ketqua = Tinhtien(a[i]);
         if (a[i] < min)
         {
             min = a[i];
-            cout << " => so tien ho gia dinh " << i << " tra it nhat la : " << a[i] << " VND " << endl;
         }
     }
+    double sotien = Tinhtien(min);
+    cout << " => so tien ho gia dinh " << i + 1 << " tra it nhat la : " << sotien << " VND " << endl;
+
     cout << endl;
-    // sắp xếp số tiền điện tiêu thụ theo chiều tăng ssdần (từ bé đên lớn)
-    int i, j, tg;
+
+    // 3. sắp xếp số tiền điện tiêu thụ theo chiều tăng ssdần (từ bé đên lớn)
+    int j, tg;
     for (int i = 0; i < n - 1; i++)
     {
         for (int j = i + 1; j < n; j++)

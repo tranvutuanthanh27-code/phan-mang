@@ -14,8 +14,8 @@ int main()
         for (int j = 0; j < 5; j++)
         {
             cout << "Nhap diem mon " << j << ": ";
-            cin >> a[i][j];         // Dòng code của em 📥
-            tongHocSinh += a[i][j]; // Dòng code của em ➕
+            cin >> a[i][j];        
+            tongHocSinh += a[i][j]; 
         }
 
         cout << "=> Tong diem cua hoc sinh " << i << " la: " << tongHocSinh << endl
